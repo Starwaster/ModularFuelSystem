@@ -138,9 +138,10 @@ namespace RealFuels
                 for (int i = parts.Count - 1; i >= 0; --i)
                 {
                     Part foundPart = parts[i];
-                    List<PartResource> resources = foundPart.Resources.GetAll(p.id);
-                    for (int j = resources.Count - 1; j >= 0; --j)
-                        list.Add(resources[j]);
+                    //List<PartResource> resources = foundPart.Resources.GetAll(p.id);
+                    foundPart.Resources.GetAll(list, p.id);
+                    //for (int j = resources.Count - 1; j >= 0; --j)
+                    //    list.Add(resources[j]);
                 }
             }
             return list;

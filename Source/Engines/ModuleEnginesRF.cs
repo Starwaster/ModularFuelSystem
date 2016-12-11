@@ -533,9 +533,9 @@ namespace RealFuels
                 }
             }
             ambientTherm = new EngineThermodynamics();
-            ambientTherm.FromAmbientConditions(pressure, temperature, density);
+            ambientTherm = EngineThermodynamics.VesselAmbientConditions(vessel, true);
             inletTherm = new EngineThermodynamics();
-            inletTherm.CopyFrom(ambientTherm);
+            //inletTherm.CopyFrom(ambientTherm);
             currentThrottle = 1f;
             lastPropellantFraction = 1d;
             bool oldE = EngineIgnited;
@@ -576,7 +576,7 @@ namespace RealFuels
                 }
                 else
                     temperature = PhysicsGlobals.SpaceTemperature;
-                ambientTherm.FromAmbientConditions(pressure, temperature, density);
+                ambientTherm = EngineThermodynamics.VesselAmbientConditions(vessel, true);
                 UpdateSolver(ambientTherm, spaceHeight, Vector3d.zero, 0d, true, true, false);
                 double thrustVac = (engineSolver.GetThrust() * 0.001d);
 
